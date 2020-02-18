@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HoildayOptimizations.Integrations\HoildayOptimizations.Integrations.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.Common.Helpers\HolidayOptimizations.Common.Helpers.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.Service.Entities\HolidayOptimizations.Service.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

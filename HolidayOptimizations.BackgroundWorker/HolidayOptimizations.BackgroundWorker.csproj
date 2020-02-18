@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentScheduler" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.1" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HolidayOptimizations.Common.Helpers\HolidayOptimizations.Common.Helpers.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.Service.Controllers\HolidayOptimizations.Service.Controllers.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.Service.Entities\HolidayOptimizations.Service.Entities.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.StorageRepository.DataRepositoryInterface\HolidayOptimizations.StorageRepository.DataRepositoryInterface.csproj" />
+    <ProjectReference Include="..\HolidayOptimizations.StorageRepository.DataRepository\HolidayOptimizations.StorageRepository.DataRepository.csproj" />
+  </ItemGroup>
+
+</Project>
