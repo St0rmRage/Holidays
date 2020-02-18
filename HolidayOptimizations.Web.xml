@@ -11,5 +11,26 @@
             <param name="year"></param>
             <returns></returns>
         </member>
+        <member name="M:HolidayOptimizations.Web.Controllers.HolidaysController.GetMostHolidaysByMonth(System.Int64)">
+            <summary>
+            Name of the month that has most public holidays globally
+            </summary>
+            <param name="year"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HolidayOptimizations.Web.Controllers.HolidaysController.GetCountryWithMostUniqueHolidays(System.Int64)">
+            <summary>
+            Country that has the most unique public holidays
+            </summary>
+            <param name="year"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HolidayOptimizations.Web.Controllers.HolidaysController.LightSpeedTravel(System.Int64)">
+            <summary>
+            Longest lasting sequence of holidays around the world
+            </summary>
+            <param name="year"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
