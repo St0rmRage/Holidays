@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HolidayOptimizations.Web</name>
+    </assembly>
+    <members>
+        <member name="M:HolidayOptimizations.Web.Controllers.HolidaysController.GetCountryWithMostHolidays(System.Int64)">
+            <summary>
+            Name of the country that has most public holidays globally
+            </summary>
+            <param name="year"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

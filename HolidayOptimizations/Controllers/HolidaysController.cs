@@ -18,12 +18,11 @@ namespace HolidayOptimizations.Web.Controllers
             _process = process;
         }
 
-        [SwaggerOperation(
-            Summary = "Returns an object with the name of the country that has most public holidays globally",
-            Description = "Returns an object with the name of the country that has most public holidays globally",
-            OperationId = "GetCountryWithMostHolidays",
-            Tags = new[] { "PublicHolidays" }
-        )]
+        /// <summary>
+        /// Name of the country that has most public holidays globally
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Error" ,typeof(BadRequestObjectResult))]
         [SwaggerResponse(StatusCodes.Status200OK, "Success" ,typeof(string))]
         [HttpGet("{year?}")]
@@ -48,15 +47,14 @@ namespace HolidayOptimizations.Web.Controllers
             }
         }
 
-        [HttpGet("{year?}")]
-        [SwaggerOperation(
-            Summary = "Returns an object with the name of the month that has most public holidays globally",
-            Description = "Returns an object with the name of the month that has most public holidays globally",
-            OperationId = "GetMostHolidaysByMonth",
-            Tags = new[] { "PublicHolidays" }
-        )]
+        /// <summary>
+        /// Name of the month that has most public holidays globally
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
         [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
+        [HttpGet("{year?}")]
         [Throttle(Name = "GetMostHolidaysByMonth", Milliseconds = 200)]
         public ActionResult GetMostHolidaysByMonth(long year = 0)
         {
@@ -78,15 +76,14 @@ namespace HolidayOptimizations.Web.Controllers
             }
         }
 
-        [HttpGet("{year?}")]
-        [SwaggerOperation(
-            Summary = "Returns an object with the country that has the most unique public holidays",
-            Description = "Returns an object with the country that has the most unique public holidays together with the unique holidays",
-            OperationId = "GetCountryWithMostUniqueHolidays",
-            Tags = new[] { "PublicHolidays", "UniqueHolidays" }
-        )]
+        /// <summary>
+        /// Country that has the most unique public holidays
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
         [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
+        [HttpGet("{year?}")]
         [Throttle(Name = "GetCountryWithMostUniqueHolidays", Milliseconds = 200)]
         public ActionResult GetCountryWithMostUniqueHolidays(long year = 0)
         {
@@ -108,15 +105,14 @@ namespace HolidayOptimizations.Web.Controllers
             }
         }
 
-        [HttpGet("{year?}")]
-        [SwaggerOperation(
-            Summary = "Longest lasting sequence of holidays around the world",
-            Description = "What is the longest lasting sequence of holidays around the world you can find this year if you could travel at lightspeed between countries and timezones ? ",
-            OperationId = "LightSpeedTravel",
-            Tags = new[] { "LightSpeedTravel", "Holidays" }
-        )]
+        /// <summary>
+        /// Longest lasting sequence of holidays around the world
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
         [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
+        [HttpGet("{year?}")]
         [Throttle(Name = "LightSpeedTravel", Milliseconds = 200)]
         public ActionResult LightSpeedTravel(long year = 0)
         {
