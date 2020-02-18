@@ -14,6 +14,7 @@ using HoildayOptimizations.Integrations;
 using HolidayOptimizations.Service.Controllers;
 using HolidayOptimizations.Service.Processes.Helpers;
 using HolidayOptimizations.StorageRepository.DataRepositoryInterface.Features.Holidays;
+using HolidayOptimizations.Service.Processes.Logger;
 
 namespace HolidayOptimizations.TestMS
 {
@@ -23,6 +24,7 @@ namespace HolidayOptimizations.TestMS
         private Mock<IHolidaysHelper> holidaysHelper;
         private Mock<ITimezonesRepository> timezonesRepository;
         private Mock<INaggerClient> naggerClient;
+        private Mock<ILogger> logger;
         private HolidaysService holidaysController;
 
         [TestInitialize]
@@ -31,9 +33,12 @@ namespace HolidayOptimizations.TestMS
             holidaysHelper = new Mock<IHolidaysHelper>();
             timezonesRepository = new Mock<ITimezonesRepository>();
             naggerClient = new Mock<INaggerClient>();
+            logger = new Mock<ILogger>();
+
             holidaysController = new HolidaysService(holidaysHelper.Object, 
                                                      timezonesRepository.Object,
-                                                     naggerClient.Object);
+                                                     naggerClient.Object, 
+                                                     logger.Object);
 
             holidaysHelper.Setup(x => x.GetAllHolidays(2020)).Returns(new List<PublicHoliday>
             {

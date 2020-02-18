@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HolidayOptimizations.Web.Controllers
 {
@@ -27,8 +24,8 @@ namespace HolidayOptimizations.Web.Controllers
             OperationId = "GetCountryWithMostHolidays",
             Tags = new[] { "PublicHolidays" }
         )]
-        [ProducesResponseType(typeof(BadRequestObjectResult), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Error" ,typeof(BadRequestObjectResult))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Success" ,typeof(string))]
         [HttpGet("{year?}")]
         [Throttle(Name = "GetCountryWithMostHolidays", Milliseconds = 200)]
         public ActionResult GetCountryWithMostHolidays(long year = 0)
@@ -58,8 +55,8 @@ namespace HolidayOptimizations.Web.Controllers
             OperationId = "GetMostHolidaysByMonth",
             Tags = new[] { "PublicHolidays" }
         )]
-        [ProducesResponseType(typeof(BadRequestObjectResult), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
         [Throttle(Name = "GetMostHolidaysByMonth", Milliseconds = 200)]
         public ActionResult GetMostHolidaysByMonth(long year = 0)
         {
@@ -88,8 +85,8 @@ namespace HolidayOptimizations.Web.Controllers
             OperationId = "GetCountryWithMostUniqueHolidays",
             Tags = new[] { "PublicHolidays", "UniqueHolidays" }
         )]
-        [ProducesResponseType(typeof(BadRequestObjectResult), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
         [Throttle(Name = "GetCountryWithMostUniqueHolidays", Milliseconds = 200)]
         public ActionResult GetCountryWithMostUniqueHolidays(long year = 0)
         {
@@ -118,8 +115,8 @@ namespace HolidayOptimizations.Web.Controllers
             OperationId = "LightSpeedTravel",
             Tags = new[] { "LightSpeedTravel", "Holidays" }
         )]
-        [ProducesResponseType(typeof(BadRequestObjectResult), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Error", typeof(BadRequestObjectResult))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Success", typeof(string))]
         [Throttle(Name = "LightSpeedTravel", Milliseconds = 200)]
         public ActionResult LightSpeedTravel(long year = 0)
         {

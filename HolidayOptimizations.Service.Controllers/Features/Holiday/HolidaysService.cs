@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using HolidayOptimizations.Service.Processes.Helpers;
 using HoildayOptimizations.Integrations;
+using Microsoft.Extensions.Logging;
 
 namespace HolidayOptimizations.Service.Controllers
 {
@@ -18,14 +19,23 @@ namespace HolidayOptimizations.Service.Controllers
         private IHolidaysHelper _helper;
         private ITimezonesRepository _timezonesRepository;
         private INaggerClient _naggerClient;
+        private Processes.Logger.ILogger _logger;
 
-        public HolidaysService(IHolidaysHelper helper, ITimezonesRepository timezonesRepository, INaggerClient naggerClient)
+        public HolidaysService(IHolidaysHelper helper, 
+                                ITimezonesRepository timezonesRepository, 
+                                INaggerClient naggerClient,
+                                Processes.Logger.ILogger logger):base(logger)
         {
             _helper = helper;
             _timezonesRepository = timezonesRepository;
             _naggerClient = naggerClient;
         }
 
+        /// <summary>
+        /// Get the country that has the most holidays in a year worldwide
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public BaseResponse<string> GetCountryWithMostHolidays(long year)
         {
             return Wrap(() =>
@@ -58,6 +68,11 @@ namespace HolidayOptimizations.Service.Controllers
             });
         }
 
+        /// <summary>
+        /// Get the month which has the most holidays in a year
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public BaseResponse<string> GetMostHolidaysByMonth(long year)
         {
             return Wrap(() =>
@@ -84,7 +99,12 @@ namespace HolidayOptimizations.Service.Controllers
             });
             
         }
-        
+
+        /// <summary>
+        /// Get the country that has the most unique holidays (E.g. days that no other country had a holiday.)
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public BaseResponse<string> GetCountryWithMostUniqueHolidays(long year)
         {
             return Wrap(() =>
@@ -129,6 +149,12 @@ namespace HolidayOptimizations.Service.Controllers
             });
         }
 
+        /// <summary>
+        /// What is the longest lasting sequence of holidays around the world you can
+        /// find this year if you could travel at lightspeed between countries and timezones?
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public BaseResponse<LightspeedTravelResponse> LightSpeedTravel(long year)
         {
             return Wrap(() =>
@@ -210,6 +236,7 @@ namespace HolidayOptimizations.Service.Controllers
                 var listOfHolidays = new List<PublicHoliday>();
                 var listOfHolidaysFinal = new List<PublicHoliday>();
 
+                //Get the longest overlapping or touching sequence of holidays
                 for (int i = 0; i < publicHolidaysByDate.Count - 1; i++)
                 {
                     var holiday = publicHolidaysByDate[i];

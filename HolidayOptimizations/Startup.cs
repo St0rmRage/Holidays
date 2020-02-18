@@ -9,6 +9,7 @@ using HolidayOptimizations.Service.Controllers.Helpers;
 using HolidayOptimizations.Service.Entities.Configuration;
 using HolidayOptimizations.Service.Processes;
 using HolidayOptimizations.Service.Processes.Helpers;
+using HolidayOptimizations.Service.Processes.Logger;
 using HolidayOptimizations.StorageRepository.DataRepository.Features.Holidays;
 using HolidayOptimizations.StorageRepository.DataRepositoryInterface.Features.Holidays;
 using Microsoft.AspNetCore.Builder;
@@ -19,6 +20,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ILogger = HolidayOptimizations.Service.Processes.Logger.ILogger;
 
 namespace HolidayOptimizations
 {
@@ -49,6 +51,7 @@ namespace HolidayOptimizations
             services.AddTransient<ITimezonesRepository, TimezonesRepository>();
             services.AddTransient<IHolidaysHelper, PublicHolidaysHelper>();
             services.AddTransient<INaggerClient, NaggerClient>();
+            services.AddTransient<ILogger, Logger>();
 
             /* Swagger configuration */
             services.AddSwaggerGen(c =>
